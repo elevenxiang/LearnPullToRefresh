@@ -1,6 +1,8 @@
 package com.htc.eleven.learnpulltorefresh;
 
 import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -61,9 +63,20 @@ public class MainActivity extends AppCompatActivity {
                         adapter.addAll("Hello","eleven");
                         myLv.onRefreshComplete();
 
+                        // show a toast message.
                         Toast.makeText(MainActivity.this, "刷新完毕 !", Toast.LENGTH_LONG).show();
 
-                        NotificationCompat.
+                        // show a notification.
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this);
+                        builder.setSmallIcon(R.drawable.default_ptr_flip);
+                        builder.setContentTitle("eleven 的通知来了 !");
+                        builder.setContentText("您已完成刷新, 请继续查看 !");
+
+
+                        Notification n = builder.build();
+                        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                        manager.notify(1, n);
                     }
                 }.execute();
             }
