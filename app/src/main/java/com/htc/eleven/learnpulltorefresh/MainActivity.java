@@ -1,10 +1,13 @@
 package com.htc.eleven.learnpulltorefresh;
 
+import android.app.Notification;
 import android.os.AsyncTask;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -57,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
                         adapter.addAll("Hello","eleven");
                         myLv.onRefreshComplete();
+
+                        Toast.makeText(MainActivity.this, "刷新完毕 !", Toast.LENGTH_LONG).show();
+
+                        NotificationCompat.
                     }
                 }.execute();
             }
